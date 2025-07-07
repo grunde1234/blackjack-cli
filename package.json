@@ -1,0 +1,20 @@
+{
+  "name": "blackjack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Okafor Ebuka",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@types/prompt-sync": "^4.2.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
