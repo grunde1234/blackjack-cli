@@ -1,26 +1,10 @@
 #!/usr/bin/env node
-
+import {dealersHand} from './dealer'
+import {getRandomCard} from './random'
 import colors from "colors";
-import {
-  Spades,
-  Clubs,
-  Diamonds,
-  Heart
-} from "../uility";
-
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
 
-//* All 4 card suits
-const suits = [Spades, Clubs, Diamonds, Heart];
-
-//* Draw 1 random card from a random suit
-function getRandomCard() {
-  const suit = suits[Math.floor(Math.random() * suits.length)];
-  const entries = Object.entries(suit);
-  const [_, [label, value]] = entries[Math.floor(Math.random() * entries.length)];
-  return { label, value };
-}
 
 //* Show player draw and total
 function playing(label1: string, label2: string, total: number) {
@@ -58,30 +42,37 @@ function shuffle() {
   
   //*
     // Store player cards and total
-    //* keep out to store memory
+    //* kept to store memory
+//*DEALERS CARD AND PLAYER CARDS
+let dealercard = [dealerCard1.label, dealerCard2.label]
 let playerCards = [playerCard1.label, playerCard2.label];
-let total = playerTotal;
+let totalPlayer = playerTotal;
+let dealertotal = dealerTotal;
 
 // Hit/stand loop
 
 while (true) {
-  console.log(`Your hand: ${playerCards.join(', ')} → Total: ${total}`);
+  console.log(`Your hand: ${playerCards.join(', ')} → Total: ${totalPlayer}`);
+  /* console.log(`Dealers hand: ${dealerCard1.label}, `) */
+  //* hidden for dealer
+  console.log(`Dealer's hand: ${dealerCard1.label}, [HIDDEN]`)
   const action = prompt("Your action (hit/stand): ").toLowerCase();
 
   if (action === "hit") {
     const newCard = getRandomCard();
     playerCards.push(newCard.label);
-    total += newCard.value;
+    totalPlayer += newCard.value;
 
-    console.log(`You drew: ${playerCards} and total is ${newCard.label}`);
+    console.log(`You drew: ${newCard.label} and total is ${totalPlayer}`);
 
-    if (total > 21) {
+    if (totalPlayer > 21) {
       console.log(`💥 Bust! You drew ${playerCard2}.`);
       break;
     }
   } else if (action === "stand") {
     console.log("🛑 You chose to stand.");
-    break;
+    //*DEALERS TURN 
+    dealersHand(dealercard, dealertotal)
   } else {
     console.log("❗ Invalid input. Please type 'hit' or 'stand'.");
   }
@@ -97,11 +88,17 @@ else{
   }else{
     console.log("type in a number fool")
   }
+
+
+//*dealer
+/* let dealercard = [dealerCard1.label, dealerCard2.label]
+let playerCards = [playerCard1.label, playerCard2.label];
+let totalPlayer = playerTotal;
+let dealertotal = dealerTotal; */
+
+
+
+
 }
 
 shuffle();
-
-
-function dealersHand(){
-
-}
