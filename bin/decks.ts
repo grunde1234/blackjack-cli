@@ -1,10 +1,12 @@
+#!/usr/bin/env node
+
 import colors from "colors";
 import {
   Spades,
   Clubs,
   Diamonds,
   Heart
-} from "./uility";
+} from "../uility";
 
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
@@ -21,14 +23,14 @@ function getRandomCard() {
 }
 
 //* Show player draw and total
-function playing(label1: string, label2: string, total: number) {
+/* function playing(label1: string, label2: string, total: number) {
   console.log(`Player Hand: ${label1}, ${label2} → Total: ${total}`);
 }
 
 //* Show dealer draw and total
 function dealer(label1: string, label2: string, total: number) {
   console.log(`Dealer Hand: ${label1}, ${label2} → Total: ${total}`);
-}
+} */
 
 //* Game logic
 function shuffle() {
@@ -51,8 +53,8 @@ function shuffle() {
 
   console.log(`You are betting $${bet}`);
   // Show hands
-  playing(playerCard1.label, playerCard2.label, playerTotal);
-  dealer(dealerCard1.label, dealerCard2.label, dealerTotal);
+  /* playing(playerCard1.label, playerCard2.label, playerTotal);
+  dealer(dealerCard1.label, dealerCard2.label, dealerTotal); */
   
   //*
     // Store player cards and total
@@ -60,6 +62,7 @@ let playerCards = [playerCard1.label, playerCard2.label];
 let total = playerTotal;
 
 // Hit/stand loop
+
 while (true) {
   console.log(`Your hand: ${playerCards.join(', ')} → Total: ${total}`);
   const action = prompt("Your action (hit/stand): ").toLowerCase();
@@ -69,7 +72,7 @@ while (true) {
     playerCards.push(newCard.label);
     total += newCard.value;
 
-    console.log(`You drew: ${newCard.label}`);
+    console.log(`You drew: ${newCard.label} `);
 
     if (total > 21) {
       console.log("💥 Bust! You went over 21.");
