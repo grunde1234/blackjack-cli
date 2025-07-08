@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.shuffle = shuffle;
 const dealer_1 = require("./dealer");
 const random_1 = require("./random");
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
@@ -67,7 +68,7 @@ function shuffle() {
                     totalPlayer += newCard.value; //*Accumulate or use reduce
                     console.log(`You drew: ${newCard.label} and total is ${totalPlayer}`);
                     if (totalPlayer > 21) {
-                        console.log(`💥 Bust! You drew ${playerCards.join(', ')} and Total is ${totalPlayer}. and you fund is $${funds -= betTaken} you loser`);
+                        console.log(`💥 Bust! You drew ${playerCards.join(', ')} and Total is ${totalPlayer}. and your fund is $${funds -= betTaken} you loser`);
                         //*DEALERS TURN
                         (0, dealer_1.dealersHand)(dealercard, dealertotal, totalPlayer, funds, betTaken);
                         break;
@@ -84,8 +85,6 @@ function shuffle() {
                     console.log("❗ Invalid input. Please type 'hit' or 'stand'.");
                 }
             }
-            //*
-            prompt("Press enter to continue...");
         }
         else {
             console.log("You do not have that amount, get out");

@@ -17,7 +17,7 @@ function dealer(label1: string, label2: string, total: number) {
 }
 
 //* Game logic
-function shuffle() {
+export function shuffle() {
   const playerCard1 = getRandomCard();
   const playerCard2 = getRandomCard();
   const dealerCard1 = getRandomCard();
@@ -78,7 +78,7 @@ while (true) {
     console.log(`You drew: ${newCard.label} and total is ${totalPlayer}`);
 
     if (totalPlayer > 21) {
-      console.log(`💥 Bust! You drew ${playerCards.join(', ')} and Total is ${totalPlayer}. and you fund is $${funds-=betTaken} you loser`);
+      console.log(`💥 Bust! You drew ${playerCards.join(', ')} and Total is ${totalPlayer}. and your fund is $${funds-=betTaken} you loser`);
       //*DEALERS TURN
       dealersHand(dealercard, dealertotal, totalPlayer, funds, betTaken);
       break;
@@ -94,10 +94,6 @@ while (true) {
     console.log("❗ Invalid input. Please type 'hit' or 'stand'.");
   }
 }
-
-  //*
-
-  prompt("Press enter to continue...");
 }
 else{
     console.log("You do not have that amount, get out")
@@ -112,16 +108,9 @@ else{
 let playerCards = [playerCard1.label, playerCard2.label];
 let totalPlayer = playerTotal;
 let dealertotal = dealerTotal; */
-
-
-
-
 }
 
 shuffle();
-
-
-
 //*MISMATCH - THIS ALWAYS RETURNS
 /* //*BLACKJACK CALL
   if((playerCard1.label || playerCard2.label === "A♠️" || "K♠️") && (playerCard1.label || playerCard2.label === "K♠️" || "A♠️") ){
