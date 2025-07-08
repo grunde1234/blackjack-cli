@@ -18,7 +18,7 @@ function dealer(label1, label2, total) {
     console.log(`Dealer Hand: ${label1}, ${label2} → Total: ${total}`);
 }
 //* Game logic
-function shuffle() {
+function shuffle(newFund) {
     const playerCard1 = (0, random_1.getRandomCard)();
     const playerCard2 = (0, random_1.getRandomCard)();
     const dealerCard1 = (0, random_1.getRandomCard)();
@@ -26,7 +26,7 @@ function shuffle() {
     // Calculate totals
     const playerTotal = playerCard1.value + playerCard2.value;
     const dealerTotal = dealerCard1.value + dealerCard2.value;
-    let funds = 100;
+    let funds = newFund;
     console.log(`\nYour Funds: $${funds}`);
     const bet = prompt(`Enter your bet: `);
     const betTaken = Number(bet);
@@ -99,7 +99,7 @@ function shuffle() {
     let totalPlayer = playerTotal;
     let dealertotal = dealerTotal; */
 }
-shuffle();
+shuffle(100);
 //*MISMATCH - THIS ALWAYS RETURNS
 /* //*BLACKJACK CALL
   if((playerCard1.label || playerCard2.label === "A♠️" || "K♠️") && (playerCard1.label || playerCard2.label === "K♠️" || "A♠️") ){

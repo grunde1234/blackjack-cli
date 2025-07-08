@@ -9,6 +9,7 @@ const prompt = (0, prompt_sync_1.default)();
 const random_1 = require("./random");
 const decks_1 = require("./decks");
 function dealersHand(dealercard, dealerstotal, totalPlayer, funds, betTaken) {
+    let newOne = funds;
     const dealersNextAction = ['hit', 'stand'];
     const actionIndex = Math.floor(Math.random() * dealersNextAction.length);
     const action = dealersNextAction[actionIndex];
@@ -25,7 +26,7 @@ function dealersHand(dealercard, dealerstotal, totalPlayer, funds, betTaken) {
             //*DEALER WINS
         }
         else if ((dealerstotal > totalPlayer && dealerstotal <= 21) || (dealerstotal < totalPlayer && totalPlayer > 21)) {
-            console.log(`💸 Dealer wins! you lost you have ${funds--}`);
+            console.log(`💸 Dealer wins! you lost you have $${newOne--}`);
             //*YOU WIN
         }
         else if (dealerstotal < totalPlayer && totalPlayer <= 21) {
@@ -41,8 +42,7 @@ function dealersHand(dealercard, dealerstotal, totalPlayer, funds, betTaken) {
         const show = dealercard.join(', ');
         //*BURST LOGIC
         if (dealerstotal > 21 && totalPlayer <= 21) {
-            console.log(`💥 Bust! dealer drew ${show} and TOTAL(${dealerstotal})`);
-            console.log(`🎉 You win! for now and your money is $${funds += betTaken}`);
+            console.log(`💥 Bust! dealer drew ${show} and TOTAL(${dealerstotal} 🎉 You win! for now and your money is $${newOne += betTaken})`);
             //*DEALER WINS
         }
         else if ((dealerstotal > totalPlayer && dealerstotal <= 21) || (dealerstotal < totalPlayer && totalPlayer > 21)) {
@@ -53,12 +53,12 @@ function dealersHand(dealercard, dealerstotal, totalPlayer, funds, betTaken) {
             console.log("🎉 You win!");
         }
         else if (dealerstotal > 21 && totalPlayer > 21 || dealerstotal === totalPlayer) {
-            console.log(`🤝 It's a tie! fund is $${funds}`);
+            console.log(`🤝 It's a tie! fund is $${newOne}`);
         }
     }
     let choose = prompt("would you like to continue....YES/NO: ");
     if (choose === "yes") {
-        (0, decks_1.shuffle)();
+        (0, decks_1.shuffle)(newOne);
     }
     else {
         return;

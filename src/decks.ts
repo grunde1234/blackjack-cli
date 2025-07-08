@@ -17,7 +17,7 @@ function dealer(label1: string, label2: string, total: number) {
 }
 
 //* Game logic
-export function shuffle() {
+export function shuffle(newFund: number) {
   const playerCard1 = getRandomCard();
   const playerCard2 = getRandomCard();
   const dealerCard1 = getRandomCard();
@@ -27,7 +27,7 @@ export function shuffle() {
   const playerTotal = playerCard1.value + playerCard2.value;
   const dealerTotal = dealerCard1.value + dealerCard2.value;
 
-  let funds = 100;
+  let funds = newFund;
 
   console.log(`\nYour Funds: $${funds}`);
   const bet = prompt(`Enter your bet: `);
@@ -110,7 +110,7 @@ let totalPlayer = playerTotal;
 let dealertotal = dealerTotal; */
 }
 
-shuffle();
+shuffle(100);
 //*MISMATCH - THIS ALWAYS RETURNS
 /* //*BLACKJACK CALL
   if((playerCard1.label || playerCard2.label === "A♠️" || "K♠️") && (playerCard1.label || playerCard2.label === "K♠️" || "A♠️") ){
