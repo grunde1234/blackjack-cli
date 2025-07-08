@@ -41,10 +41,11 @@ function shuffle() {
         if (betTaken <= funds && betTaken > 0) {
             console.log(`You are betting $${bet}`);
             // Show hands
-            playing(playerCard1.label, playerCard2.label, playerTotal);
-            dealer(dealerCard1.label, dealerCard2.label, dealerTotal);
+            /* playing(playerCard1.label, playerCard2.label, playerTotal);
+            dealer(dealerCard1.label, dealerCard2.label, dealerTotal); */
             //*
             // Store player cards and total
+            //* keep out to store memory
             let playerCards = [playerCard1.label, playerCard2.label];
             let total = playerTotal;
             // Hit/stand loop
@@ -55,9 +56,9 @@ function shuffle() {
                     const newCard = getRandomCard();
                     playerCards.push(newCard.label);
                     total += newCard.value;
-                    console.log(`You drew: ${newCard.label}`);
+                    console.log(`You drew: ${playerCards} and total is ${newCard.label}`);
                     if (total > 21) {
-                        console.log("💥 Bust! You went over 21.");
+                        console.log(`💥 Bust! You drew ${playerCard2}.`);
                         break;
                     }
                 }
@@ -81,3 +82,5 @@ function shuffle() {
     }
 }
 shuffle();
+function dealersHand() {
+}
